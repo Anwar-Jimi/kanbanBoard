@@ -25,6 +25,22 @@ function createTask() {
 
     const taskHeader = document.createElement('div');
     taskHeader.classList.add('task-header');
+
+    const taskTitle = document.createElement('p');
+    taskTitle.textContent = 'Hi';
+
+    const deleteIcon = document.createElement('p');
+    deleteIcon.textContent = '☒';
+
+    const taskDescriptionContainer = document.createElement('div');
+    taskDescriptionContainer.classList.add('task-description-container');
+
+    const taskDescription = document.createElement('p');
+    taskDescription.textContent = 'Description';
+
+    taskHeader.append(taskTitle, deleteIcon);
+    taskDescriptionContainer.append(taskDescription);
+    taskCard.append(taskHeader, taskDescriptionContainer);
     backlogTasks.append(taskCard);
 }
 createTask();
