@@ -22,4 +22,9 @@ let tasks = [
 function createTask() {
     const taskCard = document.createElement('div');
     taskCard.classList.add('task-container');
+
+    const taskHeader = document.createElement('div');
+    taskHeader.classList.add('task-header');
+    backlogTasks.append(taskCard);
 }
+createTask();
