@@ -18,6 +18,10 @@ let tasks = [
         description: "Marketing has requested a new banner to be added to the website."
     }
 ]
+taskLists.forEach(taskList => {
+    taskList.addEventListener('dragover', dragOver);
+    taskList.addEventListener('drop', dragDrop)
+})
 
 function createTask(id, title, description) {
     const taskCard = document.createElement('div');
@@ -35,6 +39,11 @@ function createTask(id, title, description) {
     taskDescription.textContent = description;
     deleteIcon.textContent = '☒';
 
+    taskCard.setAttribute('draggable', true);
+    taskCard.setAttribute('task-id', id);
+
+    taskCard.addEventListener('dragstart', dragStart)
+
     taskHeader.append(taskTitle, deleteIcon);
     taskDescriptionContainer.append(taskDescription);
     taskCard.append(taskHeader, taskDescriptionContainer);
@@ -45,3 +54,18 @@ function addTasks() {
 }
 
 addTasks()
+
+let elementBeingDragged;
+
+function dragStart() {
+    console.log(this)
+    elementBeingDragged = this
+}
+
+function dragOver(e) {
+    e.preventDefault()
+}
+
+function dragDrop() {
+    this.append(elementBeingDragged);
+}
