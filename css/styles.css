@@ -81,6 +81,8 @@ header .fields {
     background-color: rgb(96, 96, 192);
     color: rgb(255, 255, 255);
     padding: 5px 15px;
+    display: flex;
+    justify-content: space-between;
 }
 .task-description-container {
     padding: 10px;

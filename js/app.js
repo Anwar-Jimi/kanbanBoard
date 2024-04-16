@@ -19,28 +19,29 @@ let tasks = [
     }
 ]
 
-function createTask() {
+function createTask(id, title, description) {
     const taskCard = document.createElement('div');
-    taskCard.classList.add('task-container');
-
     const taskHeader = document.createElement('div');
-    taskHeader.classList.add('task-header');
-
     const taskTitle = document.createElement('p');
-    taskTitle.textContent = 'Hi';
-
     const deleteIcon = document.createElement('p');
-    deleteIcon.textContent = '☒';
-
     const taskDescriptionContainer = document.createElement('div');
+    const taskDescription = document.createElement('p');
+
+    taskCard.classList.add('task-container');
+    taskHeader.classList.add('task-header');
     taskDescriptionContainer.classList.add('task-description-container');
 
-    const taskDescription = document.createElement('p');
-    taskDescription.textContent = 'Description';
+    taskTitle.textContent = title;
+    taskDescription.textContent = description;
+    deleteIcon.textContent = '☒';
 
     taskHeader.append(taskTitle, deleteIcon);
     taskDescriptionContainer.append(taskDescription);
     taskCard.append(taskHeader, taskDescriptionContainer);
     backlogTasks.append(taskCard);
 }
-createTask();
+function addTasks() {
+    tasks.forEach(task => createTask(task.id, task.title, task.description))
+}
+
+addTasks()
